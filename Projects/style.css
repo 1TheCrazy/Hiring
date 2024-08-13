@@ -1,0 +1,194 @@
+#footer{
+    margin:0;
+    padding: 0;
+    position: relative;
+    height: 100px;
+    width: 100vw;
+    z-index: 1000;
+    box-shadow: 0 -10px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+#footerD {
+    display: flex;
+    height: 100px;
+    width: 100vw;
+    background-color: #1c1c1c;
+    color: white;
+    justify-content: center;
+    font-family: Roboto;
+    z-index: 1000;
+}
+
+#footerD p {
+    justify-self: center;    
+    align-self: last baseline;
+}
+
+.project{
+    width: 95vw;
+    height: 300px;
+    display: flex;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+    margin-top: calc(50vh - 150px);
+    margin-bottom: calc(50vh - 150px);
+    display: flex;
+    flex-direction: column;
+}
+
+#projects {
+    transition: top 1s cubic-bezier(0, 0, .25, 1);
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    /*padding-top: 50px;
+    padding-bottom: 50px*/;
+}
+
+#filler{
+    z-index: 1;
+    margin-top: 0;
+    /*fix to account for different viewport heights maybe const threshold and accord for that by making all the sizes fixed and not vh or vw dependant :) have fun*/
+    height: calc(3 * 2 * (max(50vh, 300px) - 150px) - 150px);
+    background-color: #333333;
+    position: relative;
+}
+
+#gradient{
+    width: 90vw;
+    height: 90vh;
+    border-radius: 30px;
+    overflow: hidden;
+    background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0), #a101714b);
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    filter:blur(90px) contrast(1.9) brightness(1.9);
+}
+
+.projectTitle {
+    font-family: Roboto;
+    color: #e3e1e1;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.projectDescription{
+    font-family: Roboto;
+    color: #a3a0a0;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: 25px;
+    width: 50vw;
+}
+
+.longProjectDescription{
+    font-family: Roboto;
+    color: #797979;
+    font-size: 16px;
+    margin-top: 0px;
+    margin-left: 25px;
+    width: 50vw;
+    font-weight: 400;
+}
+
+.projectLabel {
+    display: inline-block;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.39);
+    color: #a3a0a0;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-top:10px;
+    margin-left: 5px;
+    cursor:default;
+    user-select: none;
+}
+
+.indicator{
+    height: 15px;
+    width: 15px;
+    user-select: none;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7px;
+    border-radius: 5px;
+}
+
+#tabIndicator{
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    top: 50vh;
+    right: 0;
+    height: auto;
+    width: 15px;
+    margin-right: 15px;
+    z-index: 1000;
+    transform: translate(0, -50%);
+}
+
+.projectLabels{
+    position: absolute;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 20px;
+    padding-bottom: 3px;
+    top: 0;
+    right: 0;
+}
+
+.projectLinks{
+    position: absolute;
+    display: flex;
+    flex-direction: row-reverse;
+    margin-right: 20px;
+    padding-bottom: 3px;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.projectLink {
+    background-color: rgba(0, 0, 0, 0.39);
+    border-radius: 15px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    transition: transform 0.1s ease-in-out;
+    user-select: none;
+}
+
+.projectLink:hover{
+    transform: scale(1.1);
+}
+
+.fa-check{
+    color: rgb(0, 107, 0);
+}
+
+.fa-minus{
+    color: rgb(161, 163, 1);
+}
+
+.fa-circle{
+    color: rgb(206, 206, 206);
+}
