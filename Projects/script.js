@@ -3,7 +3,50 @@ var currentHexColor = '#a10171';
 const projectCount = document.getElementById('projects').children.length;
 const scrollThreshold = ((document.documentElement.scrollHeight - window.innerHeight + (window.innerHeight / 16)) / projectCount);
 
+document.addEventListener('keydown', function(event) {
+    /*
+    if (event.key === 'ArrowDown') {
+        if(projectViewing === 1){
+            window.scrollBy(0, scrollThreshold + scrollThreshold * 0.05);
+        }
+        else{
+            window.scrollBy(0, scrollThreshold);
+        }
+    } else if (event.key === 'ArrowUp') {
+        if(projectViewing == projectCount){
+            window.scrollBy(0, -scrollThreshold);
+        }
+        else{
+            window.scrollBy(0, -scrollThreshold);
+        }
+    }*/
+   //buggy at different screenheights resolving in next commit
+});
+
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+
+    resizeTimeout = setTimeout(() => {
+        window.location.reload();
+    }, 250);
+});
+
 document.addEventListener('DOMContentLoaded', function() {
+    for(let i = 1; i <= projectCount; i++)
+    {
+        if(this.getElementById(`tabIndicator${i}`) != null)
+            continue;
+
+        var ind = document.createElement('div');
+        ind.innerHTML = '<i class="fa-solid fa-circle"></i>';
+        ind.id = `tabIndicator${i}`;
+        ind.className = 'indicator';
+                
+        var indStack = document.getElementById('tabIndicatorStack');
+        indStack.appendChild(ind);
+    }
+
     var actualProjectViewing = Math.min(projectCount, Math.max(1, (window.scrollY / scrollThreshold) % 1 == 0 ? (window.scrollY / scrollThreshold) : Math.ceil((window.scrollY / scrollThreshold))));
     projectViewing = actualProjectViewing;
 
@@ -11,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById(`tabIndicator${projectViewing}`).style.backgroundColor = '#ccc9c931';
     changeGradient();
 });
-
 
 document.addEventListener('scroll', () =>{
     if (window.scrollY > (scrollThreshold * projectViewing)) {
@@ -30,17 +72,8 @@ document.addEventListener('scroll', () =>{
     }
 });
 
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-
-    resizeTimeout = setTimeout(() => {
-        window.location.reload();
-    }, 250);
-});
-
 function changeGradient() {
-    const colors = ['#a10171', '#940505', '#b2b40f']
+    const colors = ['#a10171', '#940505', '#b2b40f', '#2fff1d', '#2518df', '#00e1ff']
     startColorTransition(currentHexColor, colors[projectViewing - 1]);
 }
 
